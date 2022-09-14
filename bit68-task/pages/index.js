@@ -1,16 +1,27 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
+import ProductCard from '../components/ProductCard';
 import Slider from '../components/Slider'
 
 export async function getStaticProps(){
-  const bgImages = await fetch("https://63189f2cf6b281877c71eab0.mockapi.io/slider").then(res => res.json());
+  var promises = []
+  promises.push(fetch("https://63189f2cf6b281877c71eab0.mockapi.io/slider").then(res => res.json()));
+  promises.push(fetch("https://63189f2cf6b281877c71eab0.mockapi.io/products").then(res => res.json()));
+  var bgImages;
+  var products;
+  await Promise.all(promises).then(values =>{
+    bgImages = values[0];
+    products = values[1];
+  })
   return{
     props: {
-      bgImages
+      bgImages,
+      products
     }
   }
 }
-export default function Home({bgImages}) {
+export default function Home({bgImages, products}) {
+
   return (
     <div>
       <Head>
@@ -20,6 +31,7 @@ export default function Home({bgImages}) {
       </Head>
       <Navbar/>
       <Slider bgImages={bgImages}/>
+      <ProductCard products={products}/>
     </div>
   )
 }
