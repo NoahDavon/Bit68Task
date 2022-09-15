@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, {useState} from 'react';
 import Pagination from './Pagination';
 function ProductCard({products}) {
@@ -45,8 +46,9 @@ function Product({product}) {
         style: 'currency',
         currency: 'USD',
       });
-    return ( 
-        <a href={"/product/" + product.id}className="h-full w-44">
+    return (
+        <Link href={"/product/" + product.id} passHref>
+        <a className="h-full w-44">
             <div className="relative h-1/2 mx-6 my-3">
                 <Image src=	{product.img[0]} layout="fill" objectFit="contain"/>
             </div>
@@ -58,6 +60,7 @@ function Product({product}) {
             </div>
             <div className={'mx-4 my-1 font-sans text-[7px] ' + (product.inStock? 'text-green-700' : 'text-red-700')}>{product.inStock? "In" : "Out of"} stock</div>
         </a>
+        </Link>
      );
 }
 
