@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import React, {useState} from 'react';
 import Heart from '../../components/Heart';
+import ProductCard from '../../components/ProductCard';
 import Star from '../../components/Star';
 
 export async function getServerSideProps(context)
 {
-    const product = await fetch('https://63189f2cf6b281877c71eab0.mockapi.io/products').then(res => res.json()).then(products => products.filter(product => product.id === context.params.id)[0]);
-    if (!product) {
+    const products = await fetch('https://63189f2cf6b281877c71eab0.mockapi.io/products').then(res => res.json());
+    if (!products.filter(product => product.id === context.params.id)[0]) {
         return {
           notFound: true,
         }
       }
     return {
-        props: {product}
+        props: {product: products.filter(product => product.id === context.params.id)[0], products}
     }
 }
-function ProductPage({product}) {
+function ProductPage({product, products}) {
     const currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -96,6 +97,7 @@ function ProductPage({product}) {
                 <div className="mx-1 text-[8px] md:text-sm">Free 10-day return window starts {(new Date((new Date()).getFullYear(), (new Date()).getMonth() + 1, (new Date()).getDate())).toLocaleString('en-US', {month:'short', day:'2-digit'})}</div>
                 </div>
             </div>
+            <ProductCard products={products}/>
         </div>
      );
 }

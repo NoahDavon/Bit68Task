@@ -2,10 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, {useState} from 'react';
 import Pagination from './Pagination';
-function ProductCard({products}) {
+function ProductCard({products, explore}) {
     const [page, setPage] = useState(0);
     return ( 
         <div>
+            <div className={"mt-4 mx-auto h-fit w-max text-lg md:text-2xl font-bold " + (explore? "" : "md:hidden")} >
+                Explore Products
+            </div>
             <div className="mobile-products md:hidden border my-4 mx-auto h-fit w-fit rounded-[10px] divide-y flex flex-col">
             {[...Array(Math.floor(products.length/2)).keys()].map((index)=>
                 <ProductRow key={index} start={index} len={2} products={products}/>

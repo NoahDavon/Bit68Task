@@ -31,7 +31,7 @@ export default function Home({bgImages, products}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Slider bgImages={bgImages}/>
-      <ProductCard products={products}/>
+      <ProductCard products={products} explore/>
       <div className="flex-grow"></div>
       <SubCard/>
     </div>
