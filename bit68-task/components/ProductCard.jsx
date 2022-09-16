@@ -15,15 +15,19 @@ function ProductCard({products}) {
                 <div className="desktop-products border my-4 h-fit w-fit rounded-[10px]">
                     <ProductRow start={page} len={4} products={products}/>
                 </div>
-                <div className="flex w-fit mx-auto">
+                <div className="flex w-fit h-[24px] mx-auto my-8">
                     <button className='mx-4 w-fit rounded-full bg-white drop-shadow-lg' onClick={() => setPage(prev => (prev - 1 + (products.length/4)) % (products.length/4))}>
-                        Prev
+                    <span className='material-symbols-outlined'>
+                            chevron_left
+                        </span>
                     </button>
                     <div className="flex w-fit rounded-full bg-white drop-shadow-lg">
                         <Pagination count={products.length/4} name="products" page={page} onChange={setPage}/>
                     </div>
                     <button className='mx-4 w-fit rounded-full bg-white drop-shadow-lg' onClick={() => setPage(prev => (prev + 1) % (products.length/4))}>
-                        Next
+                        <span className='material-symbols-outlined'>
+                            chevron_right
+                        </span>
                     </button>
                 </div>
             </div>
@@ -32,7 +36,7 @@ function ProductCard({products}) {
 }
 function ProductRow({start, len, products}) {
     return (
-        <div className="flex h-56 w-full divide-x">
+        <div className="flex h-56 lg:h-[419px] w-full divide-x">
             {products.slice(start*len, start*len+len).map((product) =>
             <Product key={product.id} product={product}/>
             )}
@@ -48,17 +52,17 @@ function Product({product}) {
       });
     return (
         <Link href={"/product/" + product.id} passHref>
-        <a className="h-full w-44">
+        <a className="h-full w-44 lg:w-80">
             <div className="relative h-1/2 mx-6 my-3">
                 <Image src=	{product.img[0]} layout="fill" objectFit="contain"/>
             </div>
-            <div className="mx-4 my-3 font-sans text-[10px] capitalize">{product.name}</div>
-            <div className='mx-4 mt-3 font-sans text-[12px] flex'>
+            <div className="mx-4 my-3 lg:my-9 lg:mx-6 font-sans text-[10px] lg:text-base capitalize">{product.name}</div>
+            <div className='mx-4 mt-3 lg:mt-9 lg:mx-6 font-sans text-[12px] lg:text-xl flex'>
                 <div className={discounted && "text-red-700"}>{currencyFormatter.format(product.priceAfterdiscount)}</div>
                 <div className='flex-grow'></div>
                 <div className="text-gray-300 line-through">{discounted && currencyFormatter.format(product.price)}</div>
             </div>
-            <div className={'mx-4 my-1 font-sans text-[7px] ' + (product.inStock? 'text-green-700' : 'text-red-700')}>{product.inStock? "In" : "Out of"} stock</div>
+            <div className={'mx-4 my-1 lg:mx-6 font-sans text-[7px] lg:text-sm ' + (product.inStock? 'text-green-700' : 'text-red-700')}>{product.inStock? "In" : "Out of"} stock</div>
         </a>
         </Link>
      );
