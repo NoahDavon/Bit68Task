@@ -31,7 +31,7 @@ function ProductPage({product, products}) {
     }
 
     return ( 
-        <div className="flex flex-wrap justify-center max-w-[1280px] w-2/3 min-w-fit mx-auto px-3 my-8">
+        <div className="flex flex-wrap justify-center max-w-[1280px] w-2/3 mx-auto px-3 my-8">
             <div className="w-1/2 min-w-[340px] h-fit flex justify-around">
                 <div className="flex flex-col w-1/6 px-3 justify-around">
                     {product.img.slice(0,6).map((img) =>
