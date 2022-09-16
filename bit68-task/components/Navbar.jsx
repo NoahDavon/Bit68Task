@@ -5,7 +5,7 @@ function Navbar() {
         <nav className="bg-black text-white w-full h-16 md:h-24 flex justify-center">
             <div className="nav-mob-content md:hidden flex mx-7 items-center h-full w-full">
                 <Link href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="33.718" viewBox="0 0 26 33.718">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="33.718" viewBox="0 0 26 33.718" className='cursor-pointer'>
                         <g id="Group_2918" data-name="Group 2918" transform="translate(-506 -15.282)">
                             <g id="vuesax_bold_apple" data-name="vuesax/bold/apple" transform="translate(509 15.282)">
                             <g id="apple">
@@ -38,7 +38,7 @@ function Navbar() {
             </div>
             <div className="nav-content hidden md:flex justify-between items-center h-full max-w-7xl w-full mx-1">
                 <Link href="/" className="w-1/6 flex justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="41.155" height="66.751" viewBox="0 0 41.155 66.751">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="41.155" height="66.751" viewBox="0 0 41.155 66.751" className='cursor-pointer'>
                         <g id="Group_2925" data-name="Group 2925" transform="translate(-508.74 -15.282)">
                             <g id="vuesax_bold_apple" data-name="vuesax/bold/apple" transform="translate(508.74 15.282)">
                             <g id="apple">

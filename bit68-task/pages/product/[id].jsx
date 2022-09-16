@@ -22,6 +22,14 @@ function ProductPage({product, products}) {
         currency: 'USD',
       }); 
     const [selectedImage, setSelectedImage] = useState(product.img[0])
+    const [count, setCount] = useState(1);
+    function increment() {
+        setCount(count + 1);
+    }
+    function decrement(){
+        setCount(Math.max(count - 1, 1))
+    }
+
     return ( 
         <div className="flex flex-wrap justify-center max-w-[1280px] w-2/3 min-w-fit mx-auto px-3 my-8">
             <div className="w-1/2 min-w-[340px] h-fit flex justify-around">
@@ -55,9 +63,9 @@ function ProductPage({product, products}) {
                 <div className={"text-xl md:text-3xl font-medium " + (product.inStock?"text-blue-700" : "text-black")}>{currencyFormatter.format(product.priceAfterdiscount)}</div>
                 <div className={"text-[7px] md:text-xs " + (product.inStock? "text-green-700" : "text-red-700")}>{product.inStock? "In" : "Out of"} stock</div>
                 <div className="flex text-lg md:text-2xl mt-6 mb-2">
-                    <button className="h-fill aspect-square border border-black rounded-full leading-none">+</button>
-                    <div className="mx-4">4</div>
-                    <button className="h-fill aspect-square border border-black rounded-full leading-none">-</button>
+                    <button onClick={increment} className="h-fill aspect-square border border-black rounded-full leading-none">+</button>
+                    <div className="mx-4">{count}</div>
+                    <button onClick={decrement} className="h-fill aspect-square border border-black rounded-full leading-none">-</button>
                 </div>
                 <div className="text-black text-xs my-1">Payment Plans</div>
                 <div className="flex flex-wrap h-fit mb-1">
@@ -65,11 +73,11 @@ function ProductPage({product, products}) {
                     <OptionBox name="payment-plan" id="installment">Installments</OptionBox>
                 </div>
                 <div className="flex flex-wrap h-fit mb-1">
-                    <OptionBox name="bank" id="CIB">CIB</OptionBox>
-                    <OptionBox name="bank" id="CIB2">CIB</OptionBox>
-                    <OptionBox name="bank" id="CIB3">CIB</OptionBox>
-                    <OptionBox name="bank" id="CIB4">CIB</OptionBox>
-                    <OptionBox name="bank" id="CIB5">CIB</OptionBox>
+                    <OptionBox name="bank" id="CIB"><Image src="/CIB.png" layout='fill' objectFit='contain'/></OptionBox>
+                    <OptionBox name="bank" id="CIB2"><Image src="/CIB.png" layout='fill' objectFit='contain'/></OptionBox>
+                    <OptionBox name="bank" id="CIB3"><Image src="/CIB.png" layout='fill' objectFit='contain'/></OptionBox>
+                    <OptionBox name="bank" id="CIB4"><Image src="/CIB.png" layout='fill' objectFit='contain'/></OptionBox>
+                    <OptionBox name="bank" id="CIB5"><Image src="/CIB.png" layout='fill' objectFit='contain'/></OptionBox>
                 </div>
                 <div className="text-black text-xs my-1">Insurance</div>
                 <div className="flex flex-wrap h-fit mb-1">
@@ -106,8 +114,8 @@ function OptionBox({name, id, children}) {
     return ( 
         <div className="h-fit">
             <input type="radio" name={name} id={id} className="peer hidden"/>
-            <label for={id} className="peer-checked:ring-1 border rounded-xl w-20 h-14 md:w-28 md:h-20 flex mr-1 mt-1 cursor-pointer">
-                <div className="h-fit w-fit m-auto place-self-center text-[11px] md:text-base">{children}</div>
+            <label for={id} className="peer-checked:ring-1 border rounded-xl w-20 h-14 md:w-28 md:h-20 flex mr-1 mt-1 cursor-pointer ">
+                <div className="h-full w-full place-self-center text-[11px] md:text-base relative flex flex-col justify-center items-center ">{children}</div>
             </label>
         </div>
      );

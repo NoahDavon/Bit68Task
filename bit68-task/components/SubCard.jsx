@@ -8,7 +8,7 @@ function SubCard() {
                 </div>
                 <div className="flex border border-[#AAAAAA] border-r-0 rounded md:rounded-lg w-full h-6 md:h-12  text-black text-[7px] md:text-base">
                     <input type="text" placeholder="Email address" className="border-none bg-transparent focus:border-none focus:bg-transparent p-3 md:p-6 w-2/3"/>
-                    <button className="bg-black border-black text-white rounded md:rounded-lg w-1/3 h-6 md:h-12 justify-self-end self-center">Subscribe</button>
+                    <button className="bg-black border-black text-white rounded md:rounded-lg w-1/3 h-6 md:h-12 justify-self-end self-center hover:bg-gray-800">Subscribe</button>
                 </div>
 
             </div>
